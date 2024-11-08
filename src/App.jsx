@@ -1,10 +1,10 @@
-import { useState } from "react";
 import "./App.css";
+import MyAppBar from "./components/AppBar/MyAppBar";
 
 function App() {
   return (
     <div>
-      <h1>Hello Personal Trainer</h1>
+      <MyAppBar />
     </div>
   );
 }
