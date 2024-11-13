@@ -4,26 +4,50 @@ import {
   Button,
   Drawer,
   IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemIcon,
+  ListItemText,
   Toolbar,
   Typography,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
+import HomeIcon from "@mui/icons-material/Home";
+import GroupsIcon from "@mui/icons-material/Groups";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import TodayIcon from "@mui/icons-material/Today";
+import BarChartIcon from "@mui/icons-material/BarChart";
 import { useState } from "react";
 
 function MyAppBar() {
-  const [drawerOpen, setDrawerOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
-  const toggleDrawer = () => setDrawerOpen(!drawerOpen);
+  const toggleDrawer = (newOpen) => () => {
+    setOpen(newOpen);
+  };
+
+  const drawerItems = [
+    { text: "Home", icon: <HomeIcon sx={{ fontSize: "2.5rem" }} /> },
+    { text: "Customers", icon: <GroupsIcon sx={{ fontSize: "2.5rem" }} /> },
+    {
+      text: "Trainigs",
+      icon: <FitnessCenterIcon sx={{ fontSize: "2.5rem" }} />,
+    },
+    { text: "Calendar", icon: <TodayIcon sx={{ fontSize: "2.5rem" }} /> },
+    { text: "Chart", icon: <BarChartIcon sx={{ fontSize: "2.5rem" }} /> },
+  ];
 
   return (
     <Box sx={{ display: "flex" }}>
+      {/* App bar for menu (drawer) button and title */}
       <AppBar component="nav" sx={{ backgroundColor: "#03DE44" }}>
         <Toolbar>
           <IconButton
             color="inherit"
             edge="start"
             sx={{ mr: 2 }}
-            onClick={toggleDrawer}
+            onClick={toggleDrawer(true)}
           >
             <MenuIcon sx={{ fontSize: { xs: "2.5rem", sm: "3rem" } }} />
           </IconButton>
@@ -42,66 +66,32 @@ function MyAppBar() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Box sx={{ display: { xs: "1rem", sm: "2rem" } }}>
-        <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer}>
-          <Box
-            sx={{
-              width: 250,
-              paddingTop: "30px",
-              display: "flex",
-              flexDirection: "column",
-              gap: "1rem",
-              alignItems: "center",
-            }}
-          >
-            <Button
-              sx={{
-                color: "#000",
-                fontSize: "2rem",
-                fontWeight: "bold",
-              }}
-            >
-              Home
-            </Button>
-            <Button
-              sx={{
-                color: "#000",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              Customers
-            </Button>
-            <Button
-              sx={{
-                color: "#000",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              Trainings
-            </Button>
-            <Button
-              sx={{
-                color: "#000",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              Calendar
-            </Button>
-            <Button
-              sx={{
-                color: "#000",
-                fontSize: "1.5rem",
-                fontWeight: "bold",
-              }}
-            >
-              Chart
-            </Button>
-          </Box>
-        </Drawer>
-      </Box>
+
+      {/* Drawer */}
+      <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
+        <Box
+          sx={{ width: 250 }}
+          role="presentation"
+          onClick={toggleDrawer(false)}
+        >
+          <List>
+            {drawerItems.map(({ text, icon }) => (
+              <ListItem key={text} disablePadding>
+                <ListItemButton>
+                  <ListItemIcon sx={{ fontSize: "2rem" }}>{icon}</ListItemIcon>
+                  <ListItemText
+                    primary={text}
+                    primaryTypographyProps={{
+                      fontSize: "2rem",
+                      fontWeight: "bold",
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            ))}
+          </List>
+        </Box>
+      </Drawer>
     </Box>
   );
 }
