@@ -49,7 +49,7 @@ function MyAppBar() {
             sx={{ mr: 2 }}
             onClick={toggleDrawer(true)}
           >
-            <MenuIcon sx={{ fontSize: { xs: "2.5rem", sm: "3rem" } }} />
+            <MenuIcon sx={{ fontSize: { xs: "2.5rem", sm: "2,5rem" } }} />
           </IconButton>
           <Typography
             variant="h6"
@@ -83,7 +83,6 @@ function MyAppBar() {
                     primary={text}
                     primaryTypographyProps={{
                       fontSize: "2rem",
-                      fontWeight: "bold",
                     }}
                   />
                 </ListItemButton>
