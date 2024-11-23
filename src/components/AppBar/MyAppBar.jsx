@@ -41,7 +41,7 @@ function MyAppBar() {
   return (
     <Box sx={{ display: "flex", margin: "50px" }}>
       {/* App bar for menu (drawer) button and title */}
-      <AppBar component="nav" sx={{ backgroundColor: "#03DE44" }}>
+      <AppBar component="nav" sx={{ backgroundColor: "#03de44" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -68,7 +68,12 @@ function MyAppBar() {
       </AppBar>
 
       {/* Drawer */}
-      <Drawer anchor="left" open={open} onClose={toggleDrawer(false)}>
+      <Drawer
+        anchor="left"
+        open={open}
+        onClose={toggleDrawer(false)}
+        sx={{ "& .MuiDrawer-paper": { backgroundColor: "#3b3b3b" } }}
+      >
         <Box
           sx={{ width: 250 }}
           role="presentation"
@@ -78,11 +83,14 @@ function MyAppBar() {
             {drawerItems.map(({ text, icon }) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
-                  <ListItemIcon sx={{ fontSize: "2rem" }}>{icon}</ListItemIcon>
+                  <ListItemIcon sx={{ fontSize: "2rem", color: "#03de44" }}>
+                    {icon}
+                  </ListItemIcon>
                   <ListItemText
                     primary={text}
                     primaryTypographyProps={{
                       fontSize: "2rem",
+                      color: "white",
                     }}
                   />
                 </ListItemButton>
