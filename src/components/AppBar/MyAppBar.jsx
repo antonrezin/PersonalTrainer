@@ -39,7 +39,7 @@ function MyAppBar() {
   ];
 
   return (
-    <Box sx={{ display: "flex" }}>
+    <Box sx={{ display: "flex", margin: "50px" }}>
       {/* App bar for menu (drawer) button and title */}
       <AppBar component="nav" sx={{ backgroundColor: "#03DE44" }}>
         <Toolbar>
