@@ -87,7 +87,7 @@ function CustomersList() {
       style={{
         height: "130vh",
         minWidth: "350px",
-        maxWidth: "1470px",
+        maxWidth: "1471px",
         margin: "auto",
         alignItems: "center",
         fontSize: "17px",
