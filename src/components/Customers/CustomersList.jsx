@@ -7,6 +7,28 @@ function CustomersList() {
   // Saving fetched data to useState
   const [customers, setCustomers] = useState([]);
 
+  // Fetch customers data
+  const fetchData = () => {
+    fetch(
+      "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers"
+    )
+      .then((response) => {
+        if (!response.ok)
+          throw new Error("Error in fetch: " + response.statusText);
+
+        return response.json();
+      })
+      .then((data) => {
+        setCustomers(data._embedded.customers);
+        console.log(data._embedded.customers);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
   // Ag-grid column default properties function
   const columnProps = () => ({
     sortable: true,
@@ -58,28 +80,6 @@ function CustomersList() {
       ...columnProps(),
     },
   ]);
-
-  // Fetch customers data
-  const fetchData = () => {
-    fetch(
-      "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers"
-    )
-      .then((response) => {
-        if (!response.ok)
-          throw new Error("Error in fetch: " + response.statusText);
-
-        return response.json();
-      })
-      .then((data) => {
-        setCustomers(data._embedded.customers);
-        console.log(data._embedded.customers);
-      })
-      .catch((err) => console.log(err));
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, []);
 
   return (
     <div
