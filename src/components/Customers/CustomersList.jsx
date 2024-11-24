@@ -85,7 +85,7 @@ function CustomersList() {
     <div
       className="ag-theme-alpine-dark"
       style={{
-        height: "130vh",
+        height: "110vh",
         minWidth: "350px",
         maxWidth: "1471px",
         margin: "auto",
