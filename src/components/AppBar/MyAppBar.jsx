@@ -1,7 +1,6 @@
 import {
   AppBar,
   Box,
-  Button,
   Drawer,
   IconButton,
   List,
@@ -19,6 +18,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import TodayIcon from "@mui/icons-material/Today";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function MyAppBar() {
   const [open, setOpen] = useState(false);
@@ -28,14 +28,31 @@ function MyAppBar() {
   };
 
   const drawerItems = [
-    { text: "Home", icon: <HomeIcon sx={{ fontSize: "2.5rem" }} /> },
-    { text: "Customers", icon: <GroupsIcon sx={{ fontSize: "2.5rem" }} /> },
+    {
+      text: "Home",
+      icon: <HomeIcon sx={{ fontSize: "2.5rem" }} />,
+      path: "/",
+    },
+    {
+      text: "Customers",
+      icon: <GroupsIcon sx={{ fontSize: "2.5rem" }} />,
+      path: "/customers",
+    },
     {
       text: "Trainigs",
       icon: <FitnessCenterIcon sx={{ fontSize: "2.5rem" }} />,
+      path: "/trainings",
     },
-    { text: "Calendar", icon: <TodayIcon sx={{ fontSize: "2.5rem" }} /> },
-    { text: "Chart", icon: <BarChartIcon sx={{ fontSize: "2.5rem" }} /> },
+    {
+      text: "Calendar",
+      icon: <TodayIcon sx={{ fontSize: "2.5rem" }} />,
+      path: "/calendar",
+    },
+    {
+      text: "Chart",
+      icon: <BarChartIcon sx={{ fontSize: "2.5rem" }} />,
+      path: "/chart",
+    },
   ];
 
   return (
@@ -80,9 +97,9 @@ function MyAppBar() {
           onClick={toggleDrawer(false)}
         >
           <List>
-            {drawerItems.map(({ text, icon }) => (
+            {drawerItems.map(({ text, icon, path }) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton>
+                <ListItemButton component={Link} to={path}>
                   <ListItemIcon sx={{ fontSize: "2rem", color: "#03de44" }}>
                     {icon}
                   </ListItemIcon>
