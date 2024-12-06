@@ -18,7 +18,8 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import TodayIcon from "@mui/icons-material/Today";
 import BarChartIcon from "@mui/icons-material/BarChart";
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import "./MyAppBar.css";
 
 function MyAppBar() {
   const [open, setOpen] = useState(false);
@@ -99,8 +100,22 @@ function MyAppBar() {
           <List>
             {drawerItems.map(({ text, icon, path }) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton component={Link} to={path}>
-                  <ListItemIcon sx={{ fontSize: "2rem", color: "#03de44" }}>
+                <ListItemButton
+                  component={NavLink}
+                  to={path}
+                  className="drawer-link"
+                  sx={{
+                    "&.active": {
+                      backgroundColor: "#03de44",
+                    },
+                  }}
+                >
+                  <ListItemIcon
+                    className={({ isActive }) =>
+                      isActive ? "active-icon" : "inactive-icon"
+                    }
+                    sx={{ fontSize: "2rem" }}
+                  >
                     {icon}
                   </ListItemIcon>
                   <ListItemText
