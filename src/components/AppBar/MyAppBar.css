@@ -2,7 +2,7 @@
     color: #03de44 !important;
   }
   
-  .drawer-link.active .MuiListItemIcon-root {
+.drawer-link.active .MuiListItemIcon-root {
     color: white !important;
   }
   
