@@ -2,7 +2,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { useEffect, useState } from "react";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
 
 function CustomersList() {
   // Saving fetched data to useState
@@ -83,19 +83,26 @@ function CustomersList() {
   ]);
 
   return (
-    <Box
-      className="ag-theme-alpine-dark"
-      style={{
-        height: "110vh",
-        minWidth: "350px",
-        maxWidth: "1471px",
-        margin: "auto",
-        alignItems: "center",
-        fontSize: "17px",
-        textAlign: "center",
-      }}
-    >
-      <AgGridReact rowData={customers} columnDefs={columnDefs}></AgGridReact>
+    <Box>
+      <Box sx={{ textAlign: "center", margin: 4 }}>
+        <Button variant="contained" sx={{ fontWeight:"bold", fontSize:15, backgroundColor: "#03de44" }}>
+          Add New Customer
+        </Button>
+      </Box>
+      <Box
+        className="ag-theme-alpine-dark"
+        style={{
+          height: "74vh",
+          minWidth: "350px",
+          maxWidth: "1488px",
+          margin: "auto",
+          alignItems: "center",
+          fontSize: "17px",
+          textAlign: "center",
+        }}
+      >
+        <AgGridReact rowData={customers} columnDefs={columnDefs}></AgGridReact>
+      </Box>
     </Box>
   );
 }

@@ -3,6 +3,9 @@
   }
   
 .drawer-link.active .MuiListItemIcon-root {
-    color: white !important;
+    color: rgb(255, 255, 255) !important;
   }
   
+  .drawer-link.active .MuiListItemButton-root {
+    background-color: #03de44 !important;
+  }

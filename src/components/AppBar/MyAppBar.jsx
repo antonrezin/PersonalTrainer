@@ -78,6 +78,7 @@ function MyAppBar() {
               fontSize: { xs: "2rem", sm: "2rem" },
               fontWeight: "bold",
               justifyContent: "center",
+              marginRight: 7,
             }}
           >
             Personal Trainer
