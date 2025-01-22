@@ -100,32 +100,36 @@ function MyAppBar() {
           <List>
             {drawerItems.map(({ text, icon, path }) => (
               <ListItem key={text} disablePadding>
-                <ListItemButton
-                  component={NavLink}
+                <NavLink
                   to={path}
-                  className="drawer-link"
-                  sx={{
-                    "&.active": {
-                      backgroundColor: "#03de44",
-                    },
+                  className={({ isActive }) =>
+                    `drawer-link ${isActive ? "active" : ""}`
+                  }
+                  style={{
+                    textDecoration: "none",
+                    color: "inherit",
+                    width: "100%",
                   }}
                 >
-                  <ListItemIcon
-                    className={({ isActive }) =>
-                      isActive ? "active-icon" : "inactive-icon"
-                    }
-                    sx={{ fontSize: "2rem" }}
-                  >
-                    {icon}
-                  </ListItemIcon>
-                  <ListItemText
-                    primary={text}
-                    primaryTypographyProps={{
-                      fontSize: "2rem",
-                      color: "white",
+                  <ListItemButton
+                    sx={{
+                      "&.active": {
+                        backgroundColor: "#03de44",
+                      },
                     }}
-                  />
-                </ListItemButton>
+                  >
+                    <ListItemIcon sx={{ fontSize: "2rem" }}>
+                      {icon}
+                    </ListItemIcon>
+                    <ListItemText
+                      primary={text}
+                      primaryTypographyProps={{
+                        fontSize: "2rem",
+                        color: "white",
+                      }}
+                    />
+                  </ListItemButton>
+                </NavLink>
               </ListItem>
             ))}
           </List>

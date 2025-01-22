@@ -3,6 +3,7 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
+import { Box } from "@mui/material";
 
 function TrainingsList() {
   // Saving fetched data to useState
@@ -87,7 +88,7 @@ function TrainingsList() {
   ]);
 
   return (
-    <div
+    <Box
       className="ag-theme-alpine-dark"
       style={{
         height: "80vh",
@@ -100,7 +101,7 @@ function TrainingsList() {
       }}
     >
       <AgGridReact rowData={trainings} columnDefs={columnDefs}></AgGridReact>
-    </div>
+    </Box>
   );
 }
 

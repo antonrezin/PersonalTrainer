@@ -2,6 +2,7 @@ import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { useEffect, useState } from "react";
+import { Box } from "@mui/material";
 
 function CustomersList() {
   // Saving fetched data to useState
@@ -82,7 +83,7 @@ function CustomersList() {
   ]);
 
   return (
-    <div
+    <Box
       className="ag-theme-alpine-dark"
       style={{
         height: "110vh",
@@ -95,7 +96,7 @@ function CustomersList() {
       }}
     >
       <AgGridReact rowData={customers} columnDefs={columnDefs}></AgGridReact>
-    </div>
+    </Box>
   );
 }
 
