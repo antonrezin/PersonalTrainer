@@ -21,7 +21,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import "./MyAppBar.css";
 
-function MyAppBar() {
+export default function MyAppBar() {
   const [open, setOpen] = useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -139,5 +139,3 @@ function MyAppBar() {
     </Box>
   );
 }
-
-export default MyAppBar;

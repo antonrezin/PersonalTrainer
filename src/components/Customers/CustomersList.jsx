@@ -3,20 +3,20 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 import { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
+import AddCustomers from "./AddCustomers";
 
-function CustomersList() {
+export default function CustomersList() {
   // Saving fetched data to useState
   const [customers, setCustomers] = useState([]);
 
   // Fetch customers data
-  const fetchData = () => {
+  const getCustomers = () => {
     fetch(
       "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers"
     )
       .then((response) => {
         if (!response.ok)
           throw new Error("Error in fetch: " + response.statusText);
-
         return response.json();
       })
       .then((data) => {
@@ -26,9 +26,33 @@ function CustomersList() {
       .catch((err) => console.log(err));
   };
 
+  // UseEffect for get Customers
   useEffect(() => {
-    fetchData();
+    getCustomers();
   }, []);
+
+  // Adding new customer to the database
+  const addCustomer = (newCustomer) => {
+    fetch(
+      "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newCustomer),
+      }
+    )
+      .then((response) => {
+        // Error handling for POST request
+        if (!response.ok) {
+          throw new Error("Error in POST: " + response.statusText);
+        }
+        getCustomers();
+      })
+      .catch((err) => console.log(err));
+  };
 
   // Ag-grid column default properties function
   const columnProps = () => ({
@@ -85,9 +109,7 @@ function CustomersList() {
   return (
     <Box>
       <Box sx={{ textAlign: "center", margin: 4 }}>
-        <Button variant="contained" sx={{ fontWeight:"bold", fontSize:15, backgroundColor: "#03de44" }}>
-          Add New Customer
-        </Button>
+        <AddCustomers onSave={addCustomer} />
       </Box>
       <Box
         className="ag-theme-alpine-dark"
@@ -106,5 +128,3 @@ function CustomersList() {
     </Box>
   );
 }
-
-export default CustomersList;

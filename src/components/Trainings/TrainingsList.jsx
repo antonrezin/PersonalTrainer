@@ -10,7 +10,7 @@ function TrainingsList() {
   const [trainings, setTrainings] = useState([]);
 
   // Fetch "get trainings" data
-  const fetchData = () => {
+  const getTrainings = () => {
     fetch(
       "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/gettrainings"
     )
@@ -27,8 +27,9 @@ function TrainingsList() {
       .catch((err) => console.log(err));
   };
 
+  // UseEffect for get Trainings
   useEffect(() => {
-    fetchData();
+    getTrainings();
   }, []);
 
   // Ag-grid column default properties function
