@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { Box } from "@mui/material";
 
-function TrainingsList() {
+export default function TrainingsList() {
   // Saving fetched data to useState
   const [trainings, setTrainings] = useState([]);
 
@@ -50,6 +50,10 @@ function TrainingsList() {
   };
 
   const formatName = (nameString) => {
+    const customer = nameString.data.customer;
+    if (!customer) {
+      return "No customer";
+    }
     return `${nameString.data.customer.firstname} ${nameString.data.customer.lastname}`;
   };
 
@@ -105,5 +109,3 @@ function TrainingsList() {
     </Box>
   );
 }
-
-export default TrainingsList;
