@@ -108,15 +108,12 @@ export default function CustomersList() {
 
   return (
     <Box>
-      <Box sx={{ textAlign: "center", margin: 4 }}>
-        <AddCustomers onSave={addCustomer} />
-      </Box>
       <Box
         className="ag-theme-alpine-dark"
         style={{
-          height: "74vh",
+          height: "73vh",
           minWidth: "350px",
-          maxWidth: "1488px",
+          maxWidth: "1300px",
           margin: "auto",
           alignItems: "center",
           fontSize: "17px",
@@ -124,6 +121,9 @@ export default function CustomersList() {
         }}
       >
         <AgGridReact rowData={customers} columnDefs={columnDefs}></AgGridReact>
+      </Box>
+      <Box sx={{ textAlign: "center", margin: 2 }}>
+        <AddCustomers onSave={addCustomer} />
       </Box>
     </Box>
   );
