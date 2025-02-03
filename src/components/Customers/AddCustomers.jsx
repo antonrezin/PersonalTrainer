@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 
 export default function AddCustomers({ onSave }) {
-  const [ope, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const [addCustomer, setAddCustomer] = React.useState({
     firstname: "",
     lastname: "",
