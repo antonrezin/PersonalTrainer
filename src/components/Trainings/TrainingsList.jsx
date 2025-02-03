@@ -98,7 +98,7 @@ export default function TrainingsList() {
       style={{
         height: "73vh",
         minWidth: "350px",
-        maxWidth: "1090px",
+        maxWidth: "1071px",
         margin: "auto",
         alignItems: "center",
         fontSize: "17px",
