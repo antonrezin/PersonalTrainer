@@ -11,7 +11,7 @@ import {
 
 export default function AddCustomers({ onSave }) {
   const [open, setOpen] = React.useState(false);
-  const [customer, setCustomer] = React.useState({
+  const [addCustomer, setAddCustomer] = React.useState({
     firstname: "",
     lastname: "",
     streetaddress: "",
@@ -23,15 +23,15 @@ export default function AddCustomers({ onSave }) {
 
   // Adding customer input information to useState
   const handleChange = (event) => {
-    setCustomer({ ...customer, [event.target.name]: event.target.value });
+    setAddCustomer({ ...addCustomer, [event.target.name]: event.target.value });
   };
 
   // Saving new customer's information to useState
   const handleSave = () => {
-    console.log("New customer's data:", customer);
-    onSave(customer);
+    console.log("New customer's data:", addCustomer);
+    onSave(addCustomer);
     // Reset the form and close the dialog after saving
-    setCustomer({
+    setAddCustomer({
       firstname: "",
       lastname: "",
       streetaddress: "",
@@ -48,7 +48,7 @@ export default function AddCustomers({ onSave }) {
   };
 
   const handleClose = () => {
-    setCustomer({
+    setAddCustomer({
       firstname: "",
       lastname: "",
       streetaddress: "",
@@ -83,7 +83,7 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             color="success"
             onChange={handleChange}
-            value={customer.firstname}
+            value={addCustomer.firstname}
           />
           <TextField
             autoFocus
@@ -96,7 +96,7 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             color="success"
             onChange={handleChange}
-            value={customer.lastname}
+            value={addCustomer.lastname}
           />
           <TextField
             autoFocus
@@ -109,7 +109,7 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             color="success"
             onChange={handleChange}
-            value={customer.streetaddress}
+            value={addCustomer.streetaddress}
           />
           <TextField
             autoFocus
@@ -122,7 +122,7 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             color="success"
             onChange={handleChange}
-            value={customer.postcode}
+            value={addCustomer.postcode}
           />
           <TextField
             autoFocus
@@ -135,7 +135,7 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             color="success"
             onChange={handleChange}
-            value={customer.city}
+            value={addCustomer.city}
           />
           <TextField
             autoFocus
@@ -148,7 +148,7 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             color="success"
             onChange={handleChange}
-            value={customer.email}
+            value={addCustomer.email}
           />
           <TextField
             autoFocus
@@ -161,7 +161,7 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             color="success"
             onChange={handleChange}
-            value={customer.phone}
+            value={addCustomer.phone}
           />
         </DialogContent>
         <DialogActions sx={{ justifyContent: "center", marginBottom: 2 }}>
