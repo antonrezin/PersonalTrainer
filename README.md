@@ -1,4 +1,7 @@
-# Personal Trainer (React + Vite)
+## 🏋️ Personal Trainer (React + Vite)
 
-A Personal Training website developed with React and Vite.
-This application utilizes a pre-existing database and communicates through REST API calls.
+I started creating a new **Personal Trainer** app, which I had already developed before but with a different UI. This time, I am focusing on improving my **React skills** and enhancing the overall **user experience**.
+
+This application is built with **React and Vite**, utilizing a **pre-existing database** and communicating via **REST API calls**.
+
+Once completed, I will **deploy** the application, and it will be available for **review and demo**.
