@@ -4,6 +4,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
 import AddCustomers from "./AddCustomers";
+import EditCustomers from "./EditCustomers";
 
 export default function CustomersList() {
   // Saving fetched data to useState
@@ -54,6 +55,29 @@ export default function CustomersList() {
       .catch((err) => console.log(err));
   };
 
+  // Updating customer's information
+  const updateCustomer = (id, updateCustomer) => {
+    fetch(
+      `https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers/${id}`,
+      {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(updateCustomer),
+      }
+    )
+      .then((response) => {
+        // Error handling for PUT request
+        if (!response.ok) {
+          throw new Error("Error in PUT: " + response.statusText);
+        }
+        getCustomers();
+      })
+      .catch((err) => console.log(err));
+  };
+
   // Ag-grid column default properties function
   const columnProps = () => ({
     sortable: true,
@@ -70,39 +94,47 @@ export default function CustomersList() {
       ...columnProps(),
     },
     {
-      headerName: "First Name",
       field: "firstname",
+      headerName: "First Name",
       ...columnProps(),
     },
     {
-      headerName: "Last Name",
       field: "lastname",
+      headerName: "Last Name",
       ...columnProps(),
     },
     {
-      headerName: "Street Address",
       field: "streetaddress",
+      headerName: "Street Address",
       ...columnProps(),
     },
     {
-      headerName: "Postcode",
       field: "postcode",
+      headerName: "Postcode",
       ...columnProps(),
     },
     {
-      headerName: "City",
       field: "city",
+      headerName: "City",
       ...columnProps(),
     },
     {
-      headerName: "Email",
       field: "email",
+      headerName: "Email",
       ...columnProps(),
     },
     {
-      headerName: "Phone",
       field: "phone",
+      headerName: "Phone",
       ...columnProps(),
+    },
+    {
+      field: "edit",
+      headerName: "Edit",
+      width: 100,
+      cellRenderer: (params) => (
+        <EditCustomers customer={params.data} updateCustomer={updateCustomer} />
+      ),
     },
   ]);
 
