@@ -55,7 +55,7 @@ export default function DeleteCustomers({ customer, deleteCustomer }) {
             sx={{
               fontWeight: "bold",
               fontSize: 15,
-              backgroundColor: "#de0344",
+              backgroundColor: "#03de44",
               color: "white",
             }}
           >
@@ -68,7 +68,7 @@ export default function DeleteCustomers({ customer, deleteCustomer }) {
             sx={{
               fontWeight: "bold",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#de0344",
               color: "white",
             }}
           >

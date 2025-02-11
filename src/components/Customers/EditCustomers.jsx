@@ -155,7 +155,7 @@ export default function EditCustomers({ customer, updateCustomer }) {
             sx={{
               fontWeight: "bold",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#de0344",
               color: "white",
             }}
           >
