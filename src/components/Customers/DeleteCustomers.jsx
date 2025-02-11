@@ -9,7 +9,7 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-export default function EditCustomers({ customer, updateCustomer }) {
+export default function DeleteCustomers({ customer, updateCustomer }) {
   const [open, setOpen] = React.useState(false);
   const [editCustomer, setEditCustomer] = React.useState({...customer});
 
@@ -48,10 +48,10 @@ export default function EditCustomers({ customer, updateCustomer }) {
     fontWeight: "bold",
     fontSize: 13,
     padding: "1px",
-    backgroundColor: "#03de44",
+    backgroundColor: "#de0344",
   }}
 >
-        Edit
+        Delete
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle sx={{ textAlign: "center" }}>Edit Customer</DialogTitle>

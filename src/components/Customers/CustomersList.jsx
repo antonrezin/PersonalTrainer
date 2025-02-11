@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { Box, Button } from "@mui/material";
 import AddCustomers from "./AddCustomers";
 import EditCustomers from "./EditCustomers";
+import DeleteCustomers from "./DeleteCustomers";
 
 export default function CustomersList() {
   // Saving fetched data to useState
@@ -78,6 +79,24 @@ export default function CustomersList() {
       .catch((err) => console.log(err));
   };
 
+  // Deleting customer's information
+  const deleteCustomer = (id) => {
+    fetch(
+      `https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((response) => {
+        // Error handling for DELETE request
+        if (!response.ok) {
+          throw new Error("Error in DELETE: " + response.statusText);
+        }
+        getCustomers();
+      })
+      .catch((err) => console.log(err));
+  };
+
   // Ag-grid column default properties function
   const columnProps = () => ({
     sortable: true,
@@ -134,6 +153,14 @@ export default function CustomersList() {
       width: 100,
       cellRenderer: (params) => (
         <EditCustomers customer={params.data} updateCustomer={updateCustomer} />
+      ),
+    },
+    {
+      field: "delete",
+      headerName: "Delete",
+      width: 100,
+      cellRenderer: (params) => (
+        <DeleteCustomers customer={params.data} updateCustomer={updateCustomer} />
       ),
     },
   ]);
