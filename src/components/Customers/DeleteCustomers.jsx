@@ -9,9 +9,8 @@ import {
   DialogTitle,
 } from "@mui/material";
 
-export default function DeleteCustomers({ customer, updateCustomer }) {
+export default function DeleteCustomers({ customer, deleteCustomer }) {
   const [open, setOpen] = React.useState(false);
-  const [editCustomer, setEditCustomer] = React.useState({...customer});
 
   // Extract customer ID from _links.self.href
   const getCustomerId = () => {
@@ -19,19 +18,13 @@ export default function DeleteCustomers({ customer, updateCustomer }) {
     return url[url.length - 1];
   };
 
-  // Save edited customer information to useState
-  const handleChange = (event) => {
-    setEditCustomer({ ...editCustomer, [event.target.name]: event.target.value });
-  };
-
-  const handleSave = () => {
+  const handleDelete = () => {
     const customerId = getCustomerId();
-    updateCustomer(customerId, editCustomer);
+    deleteCustomer(customerId);
     setOpen(false);
-  };
+  }
 
   const handleClickOpen = () => {
-    setEditCustomer({...customer});
     setOpen(true);
   };
 
@@ -41,113 +34,20 @@ export default function DeleteCustomers({ customer, updateCustomer }) {
 
   return (
     <Box>
-<Button
-  onClick={handleClickOpen}
-  variant="contained"
-  sx={{
-    fontWeight: "bold",
-    fontSize: 13,
-    padding: "1px",
-    backgroundColor: "#de0344",
-  }}
->
+      <Button
+        onClick={handleClickOpen}
+        variant="contained"
+        sx={{
+          fontWeight: "bold",
+          fontSize: 13,
+          padding: "1px",
+          backgroundColor: "#de0344",
+        }}
+      >
         Delete
       </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{ textAlign: "center" }}>Edit Customer</DialogTitle>
-        <DialogContent>
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="firstname"
-            label="First Name"
-            type="text"
-            fullWidth
-            variant="outlined"
-            color="success"
-            value={editCustomer.firstname}
-            onChange={handleChange}
-          />
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="lastname"
-            label="Last Name"
-            type="text"
-            fullWidth
-            variant="outlined"
-            color="success"
-            value={editCustomer.lastname}
-            onChange={handleChange}
-          />
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="streetaddress"
-            label="Street Address"
-            type="text"
-            fullWidth
-            variant="outlined"
-            color="success"
-            value={editCustomer.streetaddress}
-            onChange={handleChange}
-          />
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="postcode"
-            label="Postcode"
-            type="number"
-            fullWidth
-            variant="outlined"
-            color="success"
-            value={editCustomer.postcode}
-            onChange={handleChange}
-          />
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="city"
-            label="City"
-            type="text"
-            fullWidth
-            variant="outlined"
-            color="success"
-            value={editCustomer.city}
-            onChange={handleChange}
-          />
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="email"
-            label="Email"
-            type="email"
-            fullWidth
-            variant="outlined"
-            color="success"
-            value={editCustomer.email}
-            onChange={handleChange}
-          />
-          <TextField
-            autoFocus
-            required
-            margin="dense"
-            name="phone"
-            label="Phone"
-            type="tel"
-            fullWidth
-            variant="outlined"
-            color="success"
-            value={editCustomer.phone}
-            onChange={handleChange}
-          />
-        </DialogContent>
+      <Dialog open={open} onClose={handleClose} disableRestoreFocus>
+        <DialogTitle sx={{ textAlign: "center" }}>Are you sure to delete this customer?</DialogTitle>
         <DialogActions sx={{ justifyContent: "center", marginBottom: 2 }}>
           <Button
             onClick={handleClose}
@@ -155,7 +55,7 @@ export default function DeleteCustomers({ customer, updateCustomer }) {
             sx={{
               fontWeight: "bold",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#de0344",
               color: "white",
             }}
           >
@@ -163,7 +63,7 @@ export default function DeleteCustomers({ customer, updateCustomer }) {
           </Button>
           <Button
             type="submit"
-            onClick={handleSave}
+            onClick={handleDelete}
             variant="outlined"
             sx={{
               fontWeight: "bold",
@@ -172,7 +72,7 @@ export default function DeleteCustomers({ customer, updateCustomer }) {
               color: "white",
             }}
           >
-            Add
+            Delete
           </Button>
         </DialogActions>
       </Dialog>

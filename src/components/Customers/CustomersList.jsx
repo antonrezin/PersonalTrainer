@@ -115,36 +115,43 @@ export default function CustomersList() {
     {
       field: "firstname",
       headerName: "First Name",
+      width: 140,
       ...columnProps(),
     },
     {
       field: "lastname",
       headerName: "Last Name",
+      width: 140,
       ...columnProps(),
     },
     {
       field: "streetaddress",
       headerName: "Street Address",
+      width: 170,
       ...columnProps(),
     },
     {
       field: "postcode",
       headerName: "Postcode",
+      width: 130,
       ...columnProps(),
     },
     {
       field: "city",
+      width: 130,
       headerName: "City",
       ...columnProps(),
     },
     {
       field: "email",
       headerName: "Email",
+      width: 200,
       ...columnProps(),
     },
     {
       field: "phone",
       headerName: "Phone",
+      width: 150,
       ...columnProps(),
     },
     {
@@ -160,7 +167,7 @@ export default function CustomersList() {
       headerName: "Delete",
       width: 100,
       cellRenderer: (params) => (
-        <DeleteCustomers customer={params.data} updateCustomer={updateCustomer} />
+        <DeleteCustomers customer={params.data} deleteCustomer={deleteCustomer} />
       ),
     },
   ]);
@@ -172,7 +179,7 @@ export default function CustomersList() {
         style={{
           height: "73vh",
           minWidth: "350px",
-          maxWidth: "1300px",
+          maxWidth: "1348px",
           margin: "auto",
           alignItems: "center",
           fontSize: "17px",
