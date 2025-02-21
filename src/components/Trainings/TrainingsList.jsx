@@ -4,6 +4,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { Box } from "@mui/material";
+import AddTrainings from "./AddTrainings";
 
 export default function TrainingsList() {
   // Saving fetched data to useState
@@ -26,6 +27,29 @@ export default function TrainingsList() {
       })
       .catch((err) => console.log(err));
   };
+
+    // Adding new training to the database
+    const addTraining = (newTraining) => {
+      fetch(
+        "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/trainings",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newTraining),
+        }
+      )
+        .then((response) => {
+          // Error handling for POST request
+          if (!response.ok) {
+            throw new Error("Error in POST: " + response.statusText);
+          }
+          getTrainings();
+        })
+        .catch((err) => console.log(err));
+    };
 
   // UseEffect for get Trainings
   useEffect(() => {
@@ -106,6 +130,9 @@ export default function TrainingsList() {
       }}
     >
       <AgGridReact rowData={trainings} columnDefs={columnDefs}></AgGridReact>
+      <Box sx={{ textAlign: "center", margin: 2 }}>
+        <AddTrainings onSave={addTraining} />
+      </Box>
     </Box>
   );
 }
