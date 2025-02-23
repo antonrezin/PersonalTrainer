@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Box,
   Button,
@@ -7,16 +7,40 @@ import {
   DialogActions,
   DialogContent,
   DialogTitle,
+  FormControl,
+  Select,
+  MenuItem,
+  InputLabel,
 } from "@mui/material";
 
 export default function AddTrainings({ onSave }) {
   const [open, setOpen] = React.useState(false);
+  const [customers, setCustomers] = React.useState([]);
   const [addTraining, setAddTraining] = React.useState({
     date: "",
     duration: "",
     activity: "",
     customer: "",
   });
+
+  // Fetch customers when Dialog opens
+  useEffect(() => {
+    if (open) {
+      fetch(
+        "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/customers"
+      )
+        .then((response) => {
+          if (!response.ok)
+            throw new Error("Error in fetch: " + response.statusText);
+          return response.json();
+        })
+        .then((data) => {
+          setCustomers(data._embedded.customers);
+          console.log(data._embedded.customers);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [open]);
 
   // Adding Training input information to useState
   const handleChange = (event) => {
@@ -32,6 +56,7 @@ export default function AddTrainings({ onSave }) {
       date: "",
       duration: "",
       activity: "",
+      customer: "",
     });
     setOpen(false);
   };
@@ -45,6 +70,7 @@ export default function AddTrainings({ onSave }) {
       date: "",
       duration: "",
       activity: "",
+      customer: "",
     });
     setOpen(false);
   };
@@ -73,10 +99,9 @@ export default function AddTrainings({ onSave }) {
             color="success"
             onChange={handleChange}
             value={addTraining.date}
-            InputLabelProps={{shrink: true}}
+            InputLabelProps={{ shrink: true }}
           />
           <TextField
-            autoFocus
             required
             margin="dense"
             name="duration"
@@ -89,7 +114,6 @@ export default function AddTrainings({ onSave }) {
             value={addTraining.duration}
           />
           <TextField
-            autoFocus
             required
             margin="dense"
             name="activity"
@@ -101,6 +125,21 @@ export default function AddTrainings({ onSave }) {
             onChange={handleChange}
             value={addTraining.activity}
           />
+          <FormControl fullWidth margin="dense" required>
+            <InputLabel>Customer</InputLabel>
+            <Select
+              name="customer"
+              label="Customer"
+              onChange={handleChange}
+              value={addTraining.customer}
+            >
+              {customers.map((cust) => (
+                <MenuItem key={cust._links.self.href} value={cust._links.self.href}>
+                  {cust.firstname} {cust.lastname}
+                </MenuItem>
+              ))}
+            </Select>
+          </FormControl>
         </DialogContent>
         <DialogActions sx={{ justifyContent: "center", marginBottom: 2 }}>
           <Button

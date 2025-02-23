@@ -28,28 +28,35 @@ export default function TrainingsList() {
       .catch((err) => console.log(err));
   };
 
-    // Adding new training to the database
-    const addTraining = (newTraining) => {
-      fetch(
-        "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/trainings",
-        {
-          method: "POST",
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newTraining),
+  // Adding new training to the database
+  const addTraining = (newTraining) => {
+    fetch(
+      "https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/trainings",
+      {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newTraining),
+      }
+    )
+      .then((response) => {
+        // Error handling for POST request
+        if (!response.ok) {
+          throw new Error("Error in POST: " + response.statusText);
+        } else {
+          alert("New training added successfully!");
+          return response.json();
         }
-      )
-        .then((response) => {
-          // Error handling for POST request
-          if (!response.ok) {
-            throw new Error("Error in POST: " + response.statusText);
-          }
-          getTrainings();
-        })
-        .catch((err) => console.log(err));
-    };
+      })
+      .then(() => {
+        getTrainings();
+      })
+      .catch((err) => {
+        if (err) alert("Error in POST: " + err);
+      });
+  };
 
   // UseEffect for get Trainings
   useEffect(() => {
