@@ -46,6 +46,20 @@ const theme = createTheme({
               borderColor: "#03de44", // Border color when focused
             },
           },
+          // Style specifically for date type textfield
+          "& input[type='date']": {
+            backgroundColor: "#3b3b3b", // Background color for date picker
+            color: "white", // Text color for date input
+            "&::-webkit-calendar-picker-indicator": {
+              filter: "invert(1)", // Invert the calendar icon to make it white
+            },
+            "&::-moz-calendar-picker-indicator": {
+              filter: "invert(1)", // For Firefox
+            },
+            "&::-ms-calendar-picker-indicator": {
+              filter: "invert(1)", // For Edge
+            },
+          },
         },
       },
     },
