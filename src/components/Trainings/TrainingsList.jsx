@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import dayjs from "dayjs";
 import { Box } from "@mui/material";
 import AddTrainings from "./AddTrainings";
+import DeleteTrainings from "./DeleteTrainings";
 
 export default function TrainingsList() {
   // Saving fetched data to useState
@@ -27,6 +28,11 @@ export default function TrainingsList() {
       })
       .catch((err) => console.log(err));
   };
+
+  // UseEffect for get Trainings
+  useEffect(() => {
+    getTrainings();
+  }, []);
 
   // Adding new training to the database
   const addTraining = (newTraining) => {
@@ -58,10 +64,23 @@ export default function TrainingsList() {
       });
   };
 
-  // UseEffect for get Trainings
-  useEffect(() => {
-    getTrainings();
-  }, []);
+  // Deleting training information
+  const deleteTraining = (id) => {
+    fetch(
+      `https://customer-rest-service-frontend-personaltrainer.2.rahtiapp.fi/api/trainings/${id}`,
+      {
+        method: "DELETE",
+      }
+    )
+      .then((response) => {
+        // Error handling for DELETE request
+        if (!response.ok) {
+          throw new Error("Error in DELETE: " + response.statusText);
+        }
+        getTrainings();
+      })
+      .catch((err) => console.log(err));
+  };
 
   // Ag-grid column default properties function
   const columnProps = () => ({
@@ -117,9 +136,20 @@ export default function TrainingsList() {
       ...columnProps(),
     },
     {
-      headerName: "Customer",
+      headerName: "Training",
       valueGetter: formatName,
       ...columnProps(),
+    },
+    {
+      field: "delete",
+      headerName: "Delete",
+      width: 100,
+      cellRenderer: (params) => (
+        <DeleteTrainings
+          training={params.data}
+          deleteTraining={deleteTraining}
+        />
+      ),
     },
   ]);
 
