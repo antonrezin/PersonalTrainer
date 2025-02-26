@@ -179,7 +179,7 @@ export default function CustomersList() {
         style={{
           height: "73vh",
           minWidth: "350px",
-          maxWidth: "1348px",
+          maxWidth: "1349px",
           margin: "auto",
           alignItems: "center",
           fontSize: "17px",
