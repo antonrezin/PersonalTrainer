@@ -121,11 +121,6 @@ export default function TrainingsList() {
       ...columnProps(),
     },
     {
-      headerName: "Time",
-      valueGetter: formatTime,
-      ...columnProps(),
-    },
-    {
       headerName: "Duration (Min)",
       field: "duration",
       ...columnProps(),
@@ -159,7 +154,7 @@ export default function TrainingsList() {
       style={{
         height: "73vh",
         minWidth: "350px",
-        maxWidth: "1188px",
+        maxWidth: "971px",
         margin: "auto",
         alignItems: "center",
         fontSize: "17px",
