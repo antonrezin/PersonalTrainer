@@ -6,10 +6,22 @@ import { Box, Button } from "@mui/material";
 import AddCustomers from "./AddCustomers";
 import EditCustomers from "./EditCustomers";
 import DeleteCustomers from "./DeleteCustomers";
+import { CSVLink } from "react-csv";
 
 export default function CustomersList() {
   // Saving fetched data to useState
   const [customers, setCustomers] = useState([]);
+  
+  // CSV headers
+  const csvHeaders = [
+    { label: "First Name", key: "firstname" },
+    { label: "Last Name", key: "lastname" },
+    { label: "Street Address", key: "streetaddress" },
+    { label: "Postcode", key: "postcode" },
+    { label: "City", key: "city" },
+    { label: "Email", key: "email" },
+    { label: "Phone", key: "phone" },
+  ];
 
   // Fetch customers data
   const getCustomers = () => {
@@ -190,6 +202,13 @@ export default function CustomersList() {
       </Box>
       <Box sx={{ textAlign: "center", margin: 2 }}>
         <AddCustomers onSave={addCustomer} />
+      </Box>
+      <Box sx={{ textAlign: "center", margin: 2 }}>
+        <CSVLink data={customers} headers={csvHeaders} filename={"customers.csv"}>
+          <Button variant="contained" sx={{backgroundColor:"#9b9b9b", color:"#03de44"}}>
+            Export CSV
+          </Button>
+          </CSVLink>
       </Box>
     </Box>
   );
