@@ -204,7 +204,7 @@ export default function CustomersList() {
         <AddCustomers onSave={addCustomer} />
       </Box>
       <Box sx={{ textAlign: "center", margin: 2 }}>
-        <CSVLink data={customers} headers={csvHeaders} filename={"customers.csv"}>
+        <CSVLink data={customers} headers={csvHeaders} filename={"CustomersList.csv"}>
           <Button variant="contained" sx={{backgroundColor:"#9b9b9b", color:"#03de44"}}>
             Export CSV
           </Button>
