@@ -69,7 +69,7 @@ export default function CalendarPage() {
           width: "100%",
           maxWidth: 1000,
           margin: "auto",
-          backgroundColor: "#02c93e",
+          backgroundColor: "#03de44",
           color: "#1b1b1b",
           borderRadius: "8px",
           padding: "1rem",
