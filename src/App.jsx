@@ -6,6 +6,7 @@ import MyAppBar from "./components/AppBar/MyAppBar";
 import Home from "./components/Home/Home";
 import CustomersList from "./components/Customers/CustomersList";
 import TrainingsList from "./components/Trainings/TrainingsList";
+import CalendarPage from "./components/Calendar/CalendarPage";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/customers" element={<CustomersList />} />
         <Route path="/trainings" element={<TrainingsList />} />
+        <Route path="/calendar" element={<CalendarPage />} />
       </Routes>
     </div>
     </ThemeProvider>
