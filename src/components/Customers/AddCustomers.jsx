@@ -65,12 +65,19 @@ export default function AddCustomers({ onSave }) {
       <Button
         onClick={handleClickOpen}
         variant="contained"
-        sx={{ fontWeight: "bold", fontSize: 15, backgroundColor: "#03de44" }}
+        sx={{
+          fontWeight: "bold",
+          fontSize: 15,
+          backgroundColor: "#02c83d",
+          fontFamily: "cursive",
+        }}
       >
         Add New Customer
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{ textAlign: "center" }}>Add New Customer</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center", fontFamily: "cursive" }}>
+          Add New Customer
+        </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -170,8 +177,9 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#de0344",
               color: "white",
             }}
           >
@@ -183,8 +191,9 @@ export default function AddCustomers({ onSave }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#02c83d",
               color: "white",
             }}
           >

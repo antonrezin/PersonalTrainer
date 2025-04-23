@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Dialog,
-  DialogActions,
-  DialogTitle,
-} from "@mui/material";
+import { Box, Button, Dialog, DialogActions, DialogTitle } from "@mui/material";
 
 export default function DeleteTrainings({ training, deleteTraining }) {
   const [open, setOpen] = React.useState(false);
@@ -19,7 +13,7 @@ export default function DeleteTrainings({ training, deleteTraining }) {
     const trainingId = getTrainingId();
     deleteTraining(trainingId);
     setOpen(false);
-  }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -36,6 +30,7 @@ export default function DeleteTrainings({ training, deleteTraining }) {
         variant="contained"
         sx={{
           fontWeight: "bold",
+          fontFamily: "cursive",
           fontSize: 13,
           padding: "1px",
           backgroundColor: "#de0344",
@@ -44,15 +39,18 @@ export default function DeleteTrainings({ training, deleteTraining }) {
         Delete
       </Button>
       <Dialog open={open} onClose={handleClose} disableRestoreFocus>
-        <DialogTitle sx={{ textAlign: "center" }}>Are you sure to delete this training?</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center", fontFamily: "cursive" }}>
+          Are you sure to delete this training?
+        </DialogTitle>
         <DialogActions sx={{ justifyContent: "center", marginBottom: 2 }}>
           <Button
             onClick={handleClose}
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#02c83d",
               color: "white",
             }}
           >
@@ -64,6 +62,7 @@ export default function DeleteTrainings({ training, deleteTraining }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
               backgroundColor: "#de0344",
               color: "white",

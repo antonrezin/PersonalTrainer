@@ -1,5 +1,5 @@
 .drawer-link .MuiListItemIcon-root {
-    color: #03de44 !important;
+    color: #02c83d !important;
   }
   
 .drawer-link.active .MuiListItemIcon-root {
@@ -7,5 +7,5 @@
   }
   
   .drawer-link.active .MuiListItemButton-root {
-    background-color: #03de44 !important;
+    background-color: #02c83d !important;
   }

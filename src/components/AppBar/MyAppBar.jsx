@@ -59,7 +59,7 @@ export default function MyAppBar() {
   return (
     <Box sx={{ display: "flex", margin: "50px" }}>
       {/* App bar for menu (drawer) button and title */}
-      <AppBar component="nav" sx={{ backgroundColor: "#03de44" }}>
+      <AppBar component="nav" sx={{ backgroundColor: "#02c83d" }}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -74,6 +74,7 @@ export default function MyAppBar() {
             component="div"
             sx={{
               flexGrow: 1,
+              fontFamily: "cursive",
               display: { xs: "flex", sm: "flex" },
               fontSize: { xs: "2rem", sm: "2rem" },
               fontWeight: "bold",
@@ -115,7 +116,7 @@ export default function MyAppBar() {
                   <ListItemButton
                     sx={{
                       "&.active": {
-                        backgroundColor: "#03de44",
+                        backgroundColor: "#02c83d",
                       },
                     }}
                   >
@@ -125,6 +126,7 @@ export default function MyAppBar() {
                     <ListItemText
                       primary={text}
                       primaryTypographyProps={{
+                        fontFamily: "cursive",
                         fontSize: "2rem",
                         color: "white",
                       }}

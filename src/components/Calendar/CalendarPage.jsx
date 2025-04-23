@@ -69,10 +69,12 @@ export default function CalendarPage() {
           width: "100%",
           maxWidth: 1000,
           margin: "auto",
-          backgroundColor: "#03de44",
-          color: "#1b1b1b",
+          backgroundColor: "#02c83d",
+          color: "#ffffff",
           borderRadius: "8px",
           padding: "1rem",
+          fontFamily: "cursive",
+          fontSize: "15px",
         }}
         eventPropGetter={() => ({
           style: {

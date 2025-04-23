@@ -80,14 +80,22 @@ export default function AddTrainings({ onSave }) {
       <Button
         onClick={handleClickOpen}
         variant="contained"
-        sx={{ fontWeight: "bold", fontSize: 15, backgroundColor: "#03de44" }}
+        sx={{
+          fontWeight: "bold",
+          fontFamily: "cursive",
+          fontSize: 15,
+          backgroundColor: "#02c83d",
+        }}
       >
         Add New Training
       </Button>
       <Dialog open={open} onClose={handleClose} disableRestoreFocus>
-        <DialogTitle sx={{ textAlign: "center" }}>Add New Training</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center", fontFamily: "cursive" }}>
+          Add New Training
+        </DialogTitle>
         <DialogContent>
           <TextField
+            className="ag-theme-alpine-dark"
             autoFocus
             required
             margin="dense"
@@ -134,7 +142,10 @@ export default function AddTrainings({ onSave }) {
               value={addTraining.customer}
             >
               {customers.map((cust) => (
-                <MenuItem key={cust._links.self.href} value={cust._links.self.href}>
+                <MenuItem
+                  key={cust._links.self.href}
+                  value={cust._links.self.href}
+                >
                   {cust.firstname} {cust.lastname}
                 </MenuItem>
               ))}
@@ -147,8 +158,9 @@ export default function AddTrainings({ onSave }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#de0344",
               color: "white",
             }}
           >
@@ -160,8 +172,9 @@ export default function AddTrainings({ onSave }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#02c83d",
               color: "white",
             }}
           >

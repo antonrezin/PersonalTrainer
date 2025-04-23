@@ -32,18 +32,18 @@ const theme = createTheme({
             color: "white", // Label text color
           },
           "& label.Mui-focused": {
-            color: "#03de44", // Label color when focused
+            color: "#02c83d", // Label color when focused
           },
           "& .MuiOutlinedInput-root": {
             color: "white", // Input text color
             "& fieldset": {
-              borderColor: "#03de44", // Green border for better visibility
+              borderColor: "#02c83d", // Green border for better visibility
             },
             "&:hover fieldset": {
-              borderColor: "#03de44", // Border color on hover
+              borderColor: "#02c83d", // Border color on hover
             },
             "&.Mui-focused fieldset": {
-              borderColor: "#03de44", // Border color when focused
+              borderColor: "#02c83d", // Border color when focused
             },
           },
           // Style specifically for date type textfield
@@ -70,18 +70,18 @@ const theme = createTheme({
             color: "white", // Label text color
           },
           "& label.Mui-focused": {
-            color: "#03de44", // Label color when focused
+            color: "#02c83d", // Label color when focused
           },
           "& .MuiOutlinedInput-root": {
             color: "white", // Input text color
             "& fieldset": {
-              borderColor: "#03de44", // Green border
+              borderColor: "#02c83d", // Green border
             },
             "&:hover fieldset": {
-              borderColor: "#03de44",
+              borderColor: "#02c83d",
             },
             "&.Mui-focused fieldset": {
-              borderColor: "#03de44",
+              borderColor: "#02c83d",
             },
           },
         },
@@ -92,7 +92,7 @@ const theme = createTheme({
         root: {
           color: "white", // Label color
           "&.Mui-focused": {
-            color: "#03de44", // Focused label color
+            color: "#02c83d", // Focused label color
           },
         },
       },
@@ -107,7 +107,7 @@ const theme = createTheme({
         },
         outlined: {
           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#03de44", // Green border when focused
+            borderColor: "#02c83d", // Green border when focused
           },
         },
       },
@@ -127,7 +127,7 @@ const theme = createTheme({
             backgroundColor: "#505050", // Slightly lighter hover effect
             color: "white", // Selected text color
             "&:hover": {
-              backgroundColor: "#03de44", // Slightly darker green on hover
+              backgroundColor: "#02c83d", // Slightly darker green on hover
             },
           },
         },

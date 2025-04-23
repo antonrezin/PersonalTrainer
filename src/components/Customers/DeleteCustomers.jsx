@@ -22,7 +22,7 @@ export default function DeleteCustomers({ customer, deleteCustomer }) {
     const customerId = getCustomerId();
     deleteCustomer(customerId);
     setOpen(false);
-  }
+  };
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -39,6 +39,7 @@ export default function DeleteCustomers({ customer, deleteCustomer }) {
         variant="contained"
         sx={{
           fontWeight: "bold",
+          fontFamily: "cursive",
           fontSize: 13,
           padding: "1px",
           backgroundColor: "#de0344",
@@ -47,15 +48,18 @@ export default function DeleteCustomers({ customer, deleteCustomer }) {
         Delete
       </Button>
       <Dialog open={open} onClose={handleClose} disableRestoreFocus>
-        <DialogTitle sx={{ textAlign: "center" }}>Are you sure to delete this customer?</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center", fontFamily: "cursive" }}>
+          Are you sure to delete this customer?
+        </DialogTitle>
         <DialogActions sx={{ justifyContent: "center", marginBottom: 2 }}>
           <Button
             onClick={handleClose}
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#02c83d",
               color: "white",
             }}
           >
@@ -67,6 +71,7 @@ export default function DeleteCustomers({ customer, deleteCustomer }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
               backgroundColor: "#de0344",
               color: "white",

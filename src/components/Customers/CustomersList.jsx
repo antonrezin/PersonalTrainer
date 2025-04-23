@@ -11,7 +11,7 @@ import { CSVLink } from "react-csv";
 export default function CustomersList() {
   // Saving fetched data to useState
   const [customers, setCustomers] = useState([]);
-  
+
   // CSV headers
   const csvHeaders = [
     { label: "First Name", key: "firstname" },
@@ -179,7 +179,10 @@ export default function CustomersList() {
       headerName: "Delete",
       width: 100,
       cellRenderer: (params) => (
-        <DeleteCustomers customer={params.data} deleteCustomer={deleteCustomer} />
+        <DeleteCustomers
+          customer={params.data}
+          deleteCustomer={deleteCustomer}
+        />
       ),
     },
   ]);
@@ -204,11 +207,24 @@ export default function CustomersList() {
         <AddCustomers onSave={addCustomer} />
       </Box>
       <Box sx={{ textAlign: "center", margin: 2 }}>
-        <CSVLink data={customers} headers={csvHeaders} filename={"CustomersList.csv"}>
-          <Button variant="contained" sx={{backgroundColor:"#9b9b9b", color:"#03de44"}}>
+        <CSVLink
+          data={customers}
+          headers={csvHeaders}
+          filename={"CustomersList.csv"}
+        >
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#9b9b9b",
+              color: "white",
+              fontWeight: "bold",
+              fontFamily: "cursive",
+              fontSize: 15,
+            }}
+          >
             Export CSV
           </Button>
-          </CSVLink>
+        </CSVLink>
       </Box>
     </Box>
   );

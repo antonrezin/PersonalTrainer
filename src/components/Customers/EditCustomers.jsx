@@ -11,7 +11,7 @@ import {
 
 export default function EditCustomers({ customer, updateCustomer }) {
   const [open, setOpen] = React.useState(false);
-  const [editCustomer, setEditCustomer] = React.useState({...customer});
+  const [editCustomer, setEditCustomer] = React.useState({ ...customer });
 
   // Extract customer ID from _links.self.href
   const getCustomerId = () => {
@@ -21,7 +21,10 @@ export default function EditCustomers({ customer, updateCustomer }) {
 
   // Save edited customer information to useState
   const handleChange = (event) => {
-    setEditCustomer({ ...editCustomer, [event.target.name]: event.target.value });
+    setEditCustomer({
+      ...editCustomer,
+      [event.target.name]: event.target.value,
+    });
   };
 
   const handleSave = () => {
@@ -31,7 +34,7 @@ export default function EditCustomers({ customer, updateCustomer }) {
   };
 
   const handleClickOpen = () => {
-    setEditCustomer({...customer});
+    setEditCustomer({ ...customer });
     setOpen(true);
   };
 
@@ -41,20 +44,23 @@ export default function EditCustomers({ customer, updateCustomer }) {
 
   return (
     <Box>
-<Button
-  onClick={handleClickOpen}
-  variant="contained"
-  sx={{
-    fontWeight: "bold",
-    fontSize: 13,
-    padding: "1px",
-    backgroundColor: "#03de44",
-  }}
->
+      <Button
+        onClick={handleClickOpen}
+        variant="contained"
+        sx={{
+          fontWeight: "bold",
+          fontFamily: "cursive",
+          fontSize: 13,
+          padding: "1px",
+          backgroundColor: "#02c83d",
+        }}
+      >
         Edit
       </Button>
       <Dialog open={open} onClose={handleClose}>
-        <DialogTitle sx={{ textAlign: "center" }}>Edit Customer</DialogTitle>
+        <DialogTitle sx={{ textAlign: "center", fontFamily: "cursive" }}>
+          Edit Customer
+        </DialogTitle>
         <DialogContent>
           <TextField
             autoFocus
@@ -154,6 +160,7 @@ export default function EditCustomers({ customer, updateCustomer }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
               backgroundColor: "#de0344",
               color: "white",
@@ -167,8 +174,9 @@ export default function EditCustomers({ customer, updateCustomer }) {
             variant="outlined"
             sx={{
               fontWeight: "bold",
+              fontFamily: "cursive",
               fontSize: 15,
-              backgroundColor: "#03de44",
+              backgroundColor: "#02c83d",
               color: "white",
             }}
           >
