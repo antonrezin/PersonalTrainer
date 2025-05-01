@@ -14,6 +14,7 @@
     "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.6",
+    "@mui/x-charts": "^8.0.0-beta.3",
     "ag-grid-react": "^32.3.3",
     "dayjs": "^1.11.13",
     "personal-trainer": "file:",
