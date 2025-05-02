@@ -15,7 +15,7 @@ function App() {
       <div>
         <MyAppBar />
         <Routes>
-          <Route path="/home" element={<Home />} />
+          <Route path="*" element={<Home />} />
           <Route path="/customers" element={<CustomersList />} />
           <Route path="/trainings" element={<TrainingsList />} />
           <Route path="/calendar" element={<CalendarPage />} />
