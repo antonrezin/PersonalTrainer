@@ -14,8 +14,9 @@ function App() {
     <ThemeProvider theme={theme}>
       <div>
         <MyAppBar />
-        <Routes>
-          <Route path="/" element={<Home />} />
+        <Routes basename="/PersonalTrainerApp">
+          <Route path="/" element={<Navigate to="/home" />} />
+          <Route path="/home" element={<Home />} />
           <Route path="/customers" element={<CustomersList />} />
           <Route path="/trainings" element={<TrainingsList />} />
           <Route path="/calendar" element={<CalendarPage />} />
