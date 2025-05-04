@@ -152,7 +152,7 @@ export default function TrainingsList() {
     <Box
       className="ag-theme-alpine-dark"
       style={{
-        height: "73vh",
+        height: "76vh",
         minWidth: "350px",
         maxWidth: "971px",
         margin: "auto",
